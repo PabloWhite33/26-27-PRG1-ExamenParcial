@@ -6,7 +6,7 @@ public class Examen {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Introduce tu nombre: ");
-        int nombre = scanner.nextInt();
+        String nombre = scanner.nextLine();
 
         final int MAYORIA_EDAD = 18;
         System.out.println("Introduce tu edad: ");
@@ -18,18 +18,53 @@ public class Examen {
             edad = scanner.nextInt();
         }
 
-        System.out.println("Introduce el numero de asignaturas en la que esta matriculado: ");
-        int asignaturas = scanner.nextInt();
-
-        if (asignaturas < 1 && asignaturas > 10) {
-            System.out.println("Introduce un numero de asignaturas valido: ");
-            asignaturas = scanner.nextInt();
-
+        int numAsignaturas;
+        do {
+            System.out.print("Número de asignaturas en las que está matriculado (1-10): ");
+            numAsignaturas = scanner.nextInt();
+        } while (numAsignaturas < 1 || numAsignaturas > 10);
+ 
+        int suma = 0;
+        int aprobadas = 0;
+        int suspensas = 0;
+        int notaMax = 0;
+        int notaMin = 10;
+ 
+        for (int i = 1; i <= numAsignaturas; i++) {
+            int nota;
+            do {
+                System.out.print("Nota de la asignatura " + i + ": ");
+                nota = scanner.nextInt();
+            } while (nota < 0 || nota > 10);
+ 
+            suma += nota;
+ 
+            if (nota >= 5) {
+                aprobadas++;
+            } else {
+                suspensas++;
+            }
+ 
+            if (nota > notaMax) {
+                notaMax = nota;
+            }
+            if (nota < notaMin) {
+                notaMin = nota;
+            }
         }
-        System.out.println("Dime tu nota en cada asignatura, el texto tiene que leer, 'Nota de la asignatura N: '");
-
-        double notaMedia = (nota1 + nota2 + nota3 + nota4 + nota5 + nota6 + nota7 + nota8 + nota9 + nota10) / asignaturas;
-
-        scanner.close();    
+ 
+        double media = (double) suma / numAsignaturas;
+ 
+        System.out.printf("Media: %.2f%n", media);
+        System.out.println("Asignaturas aprobadas: " + aprobadas);
+        System.out.println("Asignaturas suspensas: " + suspensas);
+        System.out.println("Nota más alta: " + notaMax);
+        System.out.println("Nota más baja: " + notaMin);
+ 
+        if (media >= 5 && notaMin >= 4) {
+            System.out.println("Promociona");
+        } else {
+            System.out.println("Recupera");
+        }
     }
 }
