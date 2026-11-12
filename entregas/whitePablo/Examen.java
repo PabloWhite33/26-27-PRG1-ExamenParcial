@@ -15,6 +15,9 @@ public class Examen {
             edad = scanner.nextInt();
         }
 
+        System.out.println("Introduce el numero de asignaturas en la que esta matriculado: ");
+        int asignaturas = scanner.nextInt();
+
         scanner.close();    
     }
 }
