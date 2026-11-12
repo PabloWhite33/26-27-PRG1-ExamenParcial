@@ -26,6 +26,7 @@ public class Examen {
             asignaturas = scanner.nextInt();
 
         }
+        System.out.println("Dime tu nota en cada asignatura, el texto tiene que leer, 'Nota de la asignatura N: '");
 
         scanner.close();    
     }
