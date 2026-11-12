@@ -28,6 +28,8 @@ public class Examen {
         }
         System.out.println("Dime tu nota en cada asignatura, el texto tiene que leer, 'Nota de la asignatura N: '");
 
+        double notaMedia = (nota1 + nota2 + nota3 + nota4 + nota5 + nota6 + nota7 + nota8 + nota9 + nota10) / asignaturas;
+
         scanner.close();    
     }
 }
